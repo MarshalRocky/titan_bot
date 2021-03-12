@@ -1,10 +1,7 @@
 <?php
-require"default_welcome.php";
-
 error_reporting(0);
-$tok = '1611111415:AAG3JfuPLt1ZnYe5PBPNYRo9azfz0wBCO0o';
+$tok = '1458344478:AAFEvxh1lrnEWQmgqNWMFwp64cYKT4G0_hI';
 
-########Variables_Starts_Here########
 $update = file_get_contents('php://input');
 $update = json_decode($update, true);
 
@@ -41,41 +38,170 @@ $reply_message_text = $update['message']['reply_to_message']['text'];
 $reply_message_user_fname = $update['message']['reply_to_message']['from']['first_name'];
 $reply_message_user_lname = $update['message']['reply_to_message']['from']['last_name'];
 $reply_message_user_uname = $update['message']['reply_to_message']['from']['username'];
-########Variables_Ends_Here########
 
-$items_list = array("cast iron skillet","angry meow","cricket bat","wooden cane","shovel","toaster","book","laptop","rubber chicken","spiked bat","heavy rock","chunk of dirt","ton of bricks","rasengan","spirit bomb","100-Type Guanyin Bodhisattva","rasenshuriken","Murasame","ban","chunchunmaru","Kubikiribōchō","rasengan","spherical flying kat");
+$items_list = array("cast iron skillet",
+    "angry meow",
+    "cricket bat",
+    "wooden cane",
+    "shovel",
+    "toaster",
+    "book",
+    "laptop",
+    "rubber chicken",
+    "spiked bat",
+    "heavy rock",
+    "chunk of dirt",
+    "ton of bricks",
+    "rasengan",
+    "spirit bomb",
+    "100-Type Guanyin Bodhisattva",
+    "rasenshuriken",
+    "Murasame",
+    "ban",
+    "chunchunmaru",
+    "Kubikiribōchō",
+    "rasengan",
+    "spherical flying kat",
+);
 $item = $item_list[mt_rand(0,23)];
 
-$hits_list = array("hits","whacks","slaps","smacks","bashes","pats");
+$hits_list = array("hits",
+    "whacks",
+    "slaps",
+    "smacks",
+    "bashes",
+    "pats",
+);
 $hits = $hits_list[mt_rand(0,5)];
-
-$throws_list = array("throws","flings","chucks","hurls");
+$throws_list = array("throws",
+    "flings",
+    "chucks",
+    "hurls",
+);
 $throws = $throws_list[mt_rand(0,3)];
+$slap_sentences = array("$reply_message_user_fname was killed by magic.",
+    "$reply_message_user_fname starved without pats.",
+    "$reply_message_user_fname was knocked into the void by $fname.",
+    "$reply_message_user_fname fainted.",
+    "$reply_message_user_fname is out of usable Pokemon! $reply_message_user_fname whited out!.",
+    "$reply_message_user_fname is out of usable Pokemon! $reply_message_user_fname blacked out!.",
+    "$reply_message_user_fname got rekt.",
+    "$reply_message_user_fname's melon was split by $fname.",
+    "$reply_message_user_fname was sliced and diced by $fname.",
+    "$reply_message_user_fname played hot-potato with a grenade.",
+    "$reply_message_user_fname was knifed by $fname.",
+    "$reply_message_user_fname ate a grenade.",
+    "$reply_message_user_fname is what's for dinner!",
+    "$reply_message_user_fname was terminated by $fname.",
+    "$fname spammed $reply_message_user_fname's email.",
+    "$fname RSA-encrypted $reply_message_user_fname and deleted the private key.",
+    "$fname put $reply_message_user_fname in the friendzone.",
+    "$fname slaps $reply_message_user_fname with a DMCA takedown request!",
+    "$reply_message_user_fname got a house call from Doctor $fname.",
+    "$fname beheaded $reply_message_user_fname.",
+    "$reply_message_user_fname got stoned...by an angry mob.",
+    "$fname sued the pants off $reply_message_user_fname.",
+    "$reply_message_user_fname was one-hit KO'd by $fname.",
+    "$fname sent $reply_message_user_fname down the memory hole.",
+    "$reply_message_user_fname was a mistake. - '$fname' ",
+    "$reply_message_user_fname was made redundant.",
+    "$fname $hits $reply_message_user_fname with a bat!.",
+    "$fname $hits $reply_message_user_fname with a Taijutsu Kick!.",
+    "$fname $hits $reply_message_user_fname with X-Gloves!.",
+    "$fname $hits $reply_message_user_fname with a Jet Punch!.",
+    "$fname $hits $reply_message_user_fname with a Jet Pistol!.",
+    "$fname $hits $reply_message_user_fname with a United States of Smash!.",
+    "$fname $hits $reply_message_user_fname with a Detroit Smash!.",
+    "$fname $hits $reply_message_user_fname with a Texas Smash!.",
+    "$fname $hits $reply_message_user_fname with a California Smash!.",
+    "$fname $hits $reply_message_user_fname with a New Hampshire Smash!.",
+    "$fname $hits $reply_message_user_fname with a Missouri Smash!.",
+    "$fname $hits $reply_message_user_fname with a Carolina Smash!.",
+    "$fname $hits $reply_message_user_fname with a King Kong Gun!.",
+    "$fname $hits $reply_message_user_fname with a baseball bat - metal one.!.",
+    "*Serious punches $reply_message_user_fname*.",
+    "*Normal punches $reply_message_user_fname*.",
+    "*Consecutive Normal punches $reply_message_user_fname*.",
+    "*Two Handed Consecutive Normal Punches $reply_message_user_fname*.",
+    "*Ignores $reply_message_user_fname to let them die of embarassment*.",
+    "*points at $reply_message_user_fname* What's with this sassy... lost child?.",
+    "*Hits $reply_message_user_fname with a Fire Tornado*.",
+    "$fname pokes $reply_message_user_fname in the eye !",
+    "$fname pokes $reply_message_user_fname on the sides!",
+    "$fname pokes $reply_message_user_fname!",
+    "$fname pokes $reply_message_user_fname with a needle!",
+    "$fname pokes $reply_message_user_fname with a pen!",
+    "$fname pokes $reply_message_user_fname with a stun gun!",
+    "$reply_message_user_fname is secretly a Furry!",
+    "Hey Everybody! $fname is asking me to be mean!",
+    "( ･_･)ﾉ⌒●~* (･.･;) <-$reply_message_user_fname",
+    "Take this $reply_message_user_fname\n(ﾉﾟДﾟ)ﾉ ))))●~* ",
+    "Here $reply_message_user_fname hold this\n(｀・ω・)つ ●~＊",
+    "( ・_・)ノΞ●~*  $reply_message_user_fname\nDieeeee!!.",
+    "( ・∀・)ｒ鹵~<≪巛;ﾟДﾟ)ﾉ\n*Bug sprays $reply_message_user_fname*.",
+    "( ﾟДﾟ)ﾉ占~<巛巛巛.\n-$reply_message_user_fname You pest!",
+    "( う-´)づ︻╦̵̵̿╤── \(˚☐˚”)/ $reply_message_user_fname.",
+    "$fname $hits $reply_message_user_fname with a $items.",
+    "$fname $hits $reply_message_user_fname in the face with a $items.",
+    "$fname $hits $reply_message_user_fname around a bit with a $items.",
+    "$fname $throws a $items at $reply_message_user_fname.",
+    "$fname grabs a $items and $throws it at $reply_message_user_fname's face.",
+    "$fname launches a $items in $reply_message_user_fname's general direction.",
+    "$fname starts slapping $reply_message_user_fname silly with a $items.",
+    "$fname pins $reply_message_user_fname down and repeatedly $hits them with a $items.",
+    "$fname grabs up a $items and $hits $reply_message_user_fname with it.",
+    "$fname ties $reply_message_user_fname to a chair and $throws a $items at them.",
+    "$fname gave a friendly push to help $reply_message_user_fname learn to swim in lava.",
+    "$fname bullied $reply_message_user_fname.",
+    "Nyaan ate $reply_message_user_fname's leg. *nomnomnom*",
+    "$fname $throws a master ball at $reply_message_user_fname, resistance is futile.",
+    "$fname hits $reply_message_user_fname with an action beam...bbbbbb (ง・ω・)ง ====*",
+    "$fname ara ara's $reply_message_user_fname.",
+    "$fname ora ora's $reply_message_user_fname.",
+    "$fname muda muda's $reply_message_user_fname.",
+    "$reply_message_user_fname was turned into a Jojo reference!",
+    "$fname hits $reply_message_user_fname with $items.",
+    "Round 2!..Ready? .. FIGHT!!",
+    "WhoPixel will oof $reply_message_user_fname to infinity and beyond.",
+    "$reply_message_user_fname ate a bat and discovered a new disease.",
+    "$fname folded $reply_message_user_fname into a paper plane",
+    "$fname served $reply_message_user_fname some bat soup.",
+    "$reply_message_user_fname was sent to his home, the planet of the apes.",
+    "$fname kicked $reply_message_user_fname out of a moving train.",
+    "$reply_message_user_fname just killed John Wick’s dog.",
+    "$fname performed an Avada Kedavra spell on $reply_message_user_fname.",
+    "$fname subjected $reply_message_user_fname to a fiery furnace.",
+    "Sakura Haruno just got more useful than $reply_message_user_fname",
+    "$fname unplugged $reply_message_user_fname's life support.",
+    "$fname subscribed $reply_message_user_fname' to 5 years of bad internet.",
+    "You know what’s worse than Dad jokes? $reply_message_user_fname!",
+    "$fname took all of $reply_message_user_fname's cookies.",
+    "$reply_message_user_fname wa mou.......Shindeiru! - $fname.",
+    "$reply_message_user_fname lost his race piece!");
 
-$slap_sentences = array("$reply_message_user_fname was killed by magic.","$reply_message_user_fname starved without pats.","$reply_message_user_fname was knocked into the void by $fname.","$reply_message_user_fname fainted.","$reply_message_user_fname is out of usable Pokemon! $reply_message_user_fname whited out!.","$reply_message_user_fname is out of usable Pokemon! $reply_message_user_fname blacked out!.","$reply_message_user_fname got rekt.","$reply_message_user_fname's melon was split by $fname.","$reply_message_user_fname was sliced and diced by $fname.","$reply_message_user_fname played hot-potato with a grenade.","$reply_message_user_fname was knifed by $fname.","$reply_message_user_fname ate a grenade.","$reply_message_user_fname is what's for dinner!","$reply_message_user_fname was terminated by $fname.","$fname spammed $reply_message_user_fname's email.","$fname RSA-encrypted $reply_message_user_fname and deleted the private key.","$fname put $reply_message_user_fname in the friendzone.","$fname slaps $reply_message_user_fname with a DMCA takedown request!","$reply_message_user_fname got a house call from Doctor $fname.","$fname beheaded $reply_message_user_fname.","$reply_message_user_fname got stoned...by an angry mob.","$fname sued the pants off $reply_message_user_fname.","$reply_message_user_fname was one-hit KO'd by $fname.","$fname sent $reply_message_user_fname down the memory hole.","$reply_message_user_fname was a mistake. - '$fname' ","$reply_message_user_fname was made redundant.","$fname $hits $reply_message_user_fname with a bat!.","$fname $hits $reply_message_user_fname with a Taijutsu Kick!.","$fname $hits $reply_message_user_fname with X-Gloves!.","$fname $hits $reply_message_user_fname with a Jet Punch!.","$fname $hits $reply_message_user_fname with a Jet Pistol!.","$fname $hits $reply_message_user_fname with a United States of Smash!.","$fname $hits $reply_message_user_fname with a Detroit Smash!.","$fname $hits $reply_message_user_fname with a Texas Smash!.","$fname $hits $reply_message_user_fname with a California Smash!.","$fname $hits $reply_message_user_fname with a New Hampshire Smash!.","$fname $hits $reply_message_user_fname with a Missouri Smash!.","$fname $hits $reply_message_user_fname with a Carolina Smash!.","$fname $hits $reply_message_user_fname with a King Kong Gun!.","$fname $hits $reply_message_user_fname with a baseball bat - metal one.!.","*Serious punches $reply_message_user_fname*.","*Normal punches $reply_message_user_fname*.","*Consecutive Normal punches $reply_message_user_fname*.","*Two Handed Consecutive Normal Punches $reply_message_user_fname*.","*Ignores $reply_message_user_fname to let them die of embarassment*.","*points at $reply_message_user_fname* What's with this sassy... lost child?.","*Hits $reply_message_user_fname with a Fire Tornado*.","$fname pokes $reply_message_user_fname in the eye !","$fname pokes $reply_message_user_fname on the sides!","$fname pokes $reply_message_user_fname!","$fname pokes $reply_message_user_fname with a needle!","$fname pokes $reply_message_user_fname with a pen!","$fname pokes $reply_message_user_fname with a stun gun!","$reply_message_user_fname is secretly a Furry!","Hey Everybody! $fname is asking me to be mean!","( ･_･)ﾉ⌒●~* (･.･;) <-$reply_message_user_fname","Take this $reply_message_user_fname\n(ﾉﾟДﾟ)ﾉ ))))●~* ","Here $reply_message_user_fname hold this\n(｀・ω・)つ ●~＊","( ・_・)ノΞ●~*$reply_message_user_fname\nDieeeee!!.","( ・∀・)ｒ鹵~<≪巛;ﾟДﾟ)ﾉ\n*Bug sprays $reply_message_user_fname*.","( ﾟДﾟ)ﾉ占~<巛巛巛.\n-$reply_message_user_fname You pest!","( う-´)づ︻╦̵̵̿╤── \(˚☐˚”)/ $reply_message_user_fname.","$fname $hits $reply_message_user_fname with a $items.","$fname $hits $reply_message_user_fname in the face with a $items.","$fname $hits $reply_message_user_fname around a bit with a $items.","$fname $throws a $items at $reply_message_user_fname.","$fname grabs a $items and $throws it at $reply_message_user_fname's face.","$fname launches a $items in $reply_message_user_fname's general direction.","$fname starts slapping $reply_message_user_fname silly with a $items.","$fname pins $reply_message_user_fname down and repeatedly $hits them with a $items.","$fname grabs up a $items and $hits $reply_message_user_fname with it.","$fname ties $reply_message_user_fname to a chair and $throws a $items at them.","$fname gave a friendly push to help $reply_message_user_fname learn to swim in lava.","$fname bullied $reply_message_user_fname.","Nyaan ate $reply_message_user_fname's leg. *nomnomnom*","$fname $throws a master ball at $reply_message_user_fname, resistance is futile.","$fname hits $reply_message_user_fname with an action beam...bbbbbb (ง・ω・)ง ====*","$fname ara ara's $reply_message_user_fname.","$fname ora ora's $reply_message_user_fname.","$fname muda muda's $reply_message_user_fname.","$reply_message_user_fname was turned into a Jojo reference!","$fname hits $reply_message_user_fname with $items.","Round 2!..Ready? .. FIGHT!!","WhoPixel will oof $reply_message_user_fname to infinity and beyond.","$reply_message_user_fname ate a bat and discovered a new disease.","$fname folded $reply_message_user_fname into a paper plane","$fname served $reply_message_user_fname some bat soup.","$reply_message_user_fname was sent to his home, the planet of the apes.","$fname kicked $reply_message_user_fname out of a moving train.","$reply_message_user_fname just killed John Wick’s dog.","$fname performed an Avada Kedavra spell on $reply_message_user_fname.","$fname subjected $reply_message_user_fname to a fiery furnace.","Sakura Haruno just got more useful than $reply_message_user_fname","$fname unplugged $reply_message_user_fname's life support.","$fname subscribed $reply_message_user_fname' to 5 years of bad internet.","You know what’s worse than Dad jokes? $reply_message_user_fname!","$fname took all of $reply_message_user_fname's cookies.","$reply_message_user_fname wa mou.......Shindeiru! - $fname.","$reply_message_user_fname lost his race piece!","Shut up $reply_message_user_fname, you are just $reply_message_user_fname.","$fname hits $reply_message_user_fname with Aka si anse!","@NeoTheKitty scratches $reply_message_user_fname Pixels pet cat - @NeoTheKitty","Majin buu ate $reply_message_user_fname","Goblin slayer slays $reply_message_user_fname");
-
-#$thugscripts_chat_id = "-1001291062558";
+$Admin_chat_id = '-569173405';
 $chat_id = (string)$cid;
+include 'default_welcome.php';
 
-$admin_json=["chat_id"=>$cid];
-
-$curl232 = curl_init();
-curl_setopt($curl232, CURLOPT_URL,"https://api.telegram.org/bot$tok/getChatAdministrators?");
-curl_setopt($curl232, CURLOPT_POST, 1);
-curl_setopt($curl232, CURLOPT_POSTFIELDS, $admin_json);
-curl_setopt($curl232, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl232, CURLOPT_SSL_VERIFYHOST, 0);
-curl_setopt($curl232, CURLOPT_SSL_VERIFYPEER, 0);$resp22 = curl_exec($curl232);
-$adms = json_decode($resp22,true);
-$total = count($adms['result']);
-
+	$admin_json=[
+		'chat_id'=>$cid
+	];
+	$curl232 = curl_init();
+    curl_setopt($curl232, CURLOPT_URL,"https://api.telegram.org/bot$tok/getChatAdministrators?");
+    curl_setopt($curl232, CURLOPT_POST, 1);
+    curl_setopt($curl232, CURLOPT_POSTFIELDS, $admin_json);
+    curl_setopt($curl232, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl232, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($curl232, CURLOPT_SSL_VERIFYPEER, 0);
+ $resp22 = curl_exec($curl232);
+    $adms = json_decode($resp22,true);
+ $total = count($adms['result']);
  $array_admin = '';
- for ($i=0; $i < $total ; $i++) { 
+    for ($i=0; $i < $total ; $i++) { 
     	$ddams = $adms['result'][$i]['user']['id'];
     	$admin_id_list =  "$ddams,";
     	$array_admin .= $admin_id_list;
     }
-    
 $admin_array = explode(',', $array_admin);
 if (array_search($fid, $admin_array)) {
 	$is_admin = true;
@@ -84,10 +210,8 @@ else{
 	$is_admin = false;
 }
 
-#####################USER_PERMISSION##################
-
-
-$ch12 = curl_init();
+#####################USER PERMISSION##################################################################
+	  $ch12 = curl_init();
 curl_setopt($ch12, CURLOPT_URL, "https://api.telegram.org/bot$tok/getChatMember?chat_id=$cid&user_id=$reply_message_user_id"); 
 curl_setopt($ch12, CURLOPT_POST, false); 
 curl_setopt($ch12, CURLOPT_RETURNTRANSFER, 1); 
@@ -101,9 +225,7 @@ $can_add_web_page_previews = $json122['result']['can_add_web_page_previews'];
 $stato = $json122['result']['status'];
 ##########################################################################################
 
-##############CHECK_ADMIN############
-
-
+#####################################CHECK ADMIN #########################################
 $admi = curl_init();
 curl_setopt($admi, CURLOPT_URL, "https://api.telegram.org/bot$tok/getChatMember?chat_id=$cid&user_id=$fid"); 
 curl_setopt($admi, CURLOPT_POST, false); 
@@ -112,8 +234,6 @@ curl_setopt($admi, CURLOPT_RETURNTRANSFER, 1);
 $json1221 = json_decode($output2121,true);
     curl_close($admi);
 $status = $json1221['result']['status'];
-
-
 #########################################################################################
 
 function botaction($method, $data){
@@ -132,15 +252,14 @@ function botaction($method, $data){
     $dueto = $dadel['description'];
     return $output;
 }
-
-function startsWith ($string, $startString){ 
-	
- $len = strlen($startString); 
- return (substr($string, 0, $len) === $startString); 
+function startsWith ($string, $startString) 
+{ 
+    $len = strlen($startString); 
+    return (substr($string, 0, $len) === $startString); 
 }
-
-	if (startsWith($text,'/setwelcome')) {
-		$custom_welcome_msg = str_replace('/setwelcome', "", $text);
+if ($chat_id == $Admin_chat_id) {
+	if (startsWith($text,'/setwelc')) {
+		$custom_welcome_msg = str_replace('/setwelc', "", $text);
 		$file = fopen('welcome.txt', 'r+');
 		fwrite($file,$custom_welcome_msg);
 		fclose($file); 
@@ -152,7 +271,7 @@ function startsWith ($string, $startString){
 
 	}
 
-	if (startsWith($text,'/setgoodbye')) {
+	if (startsWith($text,'/setgood')) {
 		$custom_good_msg = str_replace('/setgood', "", $text);
 		$file12 = fopen('goodbye.txt', 'r+');
 		fwrite($file12,$custom_good_msg);
@@ -233,8 +352,8 @@ if ($update['message']['left_chat_member'] == true) {
 
 	}
   }
-  if (startsWith($text,'/pin')) {
-    if($status == 'creator' || $status == 'administrator' or $reply_message_user_id == "1528880872"){
+  if (startsWith($text,'/pun')) {
+    if($status == 'creator' || $status == 'administrator'){
   	if ($reply_message == true) {
   	$pin_message = [
   		'chat_id'=>$cid,
@@ -271,8 +390,8 @@ else{
 }
 }
 
-  if (startsWith($text,'/unpin')) {
-  	 if($status == 'creator' || $status == 'administrator' or $reply_message_user_id == "1528880872"){
+  if (startsWith($text,'/unpun')) {
+  	 if($status == 'creator' || $status == 'administrator'){
   	$unpin_message = [
   		'chat_id'=>$cid,
   	];
@@ -297,8 +416,8 @@ else{
   	botaction("sendSticker",$no_unpin);
   }
 }
-  if (startsWith($text,'/unpinall')) {
-  	  	 if($status == 'creator' || $status == 'administrator' or $reply_message_user_id == "1528880872"){
+  if (startsWith($text,'/unpunall')) {
+  	  	 if($status == 'creator' || $status == 'administrator'){
   	$unpin_all_message = [
   		'chat_id'=>$cid,
   	];
@@ -323,7 +442,7 @@ else{
   	botaction("sendSticker",$no_unpin1);
   }
 }
-if (startsWith($text,'/del')) {
+if (startsWith($text,'/delt')) {
 	if ($reply_message == true) {
 		$check = 'Yes';
 if (array_search($fid, $admin_array)) {
@@ -357,8 +476,8 @@ else{
   	print_r($dadel);
 	}
 }
-if (startsWith($text,'/pro')) {
-	$custom_title = str_replace('/pro', '', $text);
+if (startsWith($text,'/promo')) {
+	$custom_title = str_replace('/promo', '', $text);
 	$custom_title = explode(" ", $custom_title);
     array_shift($custom_title);
     $custom_title = implode(" ", $custom_title);
@@ -371,7 +490,7 @@ if (startsWith($text,'/pro')) {
             ];  
             botaction("sendSticker",$send_comedy_sticker);
         }
-    elseif($status == 'creator' || $status == 'administrator' or $reply_message_user_id == "1528880872"){
+    elseif($status == 'creator' || $status == 'administrator'){
 	if($custom_title == ''){
 	echo $reply_message_id;
 	$promote_member = [
@@ -470,13 +589,13 @@ else{
 else{
     $no_reply_giben = [
         'chat_id'=>$cid,
-        'text'=>"Give Reply Bro",
+        'text'=>"Gib Reply Bro",
         'reply_to_message_id'=>$mid
     ];
     botaction("sendMessage",$no_reply_giben);
 }
 }
-if (startsWith($text,'/paste')) {
+if (startsWith($text,'/past')) {
 	if ($reply_message == true) {
 $paste = [
 'content'=> $reply_message_text
@@ -551,7 +670,7 @@ if (strrpos($text, $spam) || startsWith($text,'#help')) {
 foreach ($admin_array as $admin_id) {
 	$ia = [
 		'chat_id'=>$admin_id,
-		'text' => "<b>A Message Tagged With #help has been Found In $gname .. Check It Master</b>",
+		'text' => "<b>A Message Tagged With #help has been Found In @Thugscripts2.. Check It Master</b>",
 		'parse_mode' => 'HTML',
 	];
 botaction("sendMessage",$ia);
@@ -682,7 +801,7 @@ $mean = "
 
 ==========================
 
-<i>Extracted From => TITAN CLAN PRIVATE LIMITED</i>";
+<i>Extracted From => Stark Dictionary Services Pvt. Ltd.</i>";
 $message_send_meaning = [
 	'chat_id'=>$cid,
 	'text' => $mean,
@@ -732,7 +851,7 @@ https://linksind.net/rrr/spyder.php?name=$font_genarate_text&back=style1.jpg","h
     botaction("sendPhoto",$send_photo);
 	}
 	}
-	if(startsWith($text,'/mute')){
+	if(startsWith($text,'/m')){
 if (!in_array('1458344478', $admin_array)) {
 	$i_am_not = [
 		'chat_id'=>$cid,
@@ -742,7 +861,7 @@ if (!in_array('1458344478', $admin_array)) {
 	botaction("sendMessage",$i_am_not);
 }
 else{
-	$res = str_replace("/mute", "", $text);
+	$res = str_replace("/m", "", $text);
 	if ($res == '') {
 		$mute  = "<b>Silence Now...🤫🤫\n<a href='t.me/$reply_message_user_uname'>$reply_message_user_fname</a> Is Muted...🤐🔇</b>";
 	}
@@ -755,16 +874,7 @@ else{
 		'chat_id'=>$cid,
 		'reply_to_message_id'=>$mid,
 		'parse_mode'=>'HTML',
-		'text'=>"<b>You want a punch to trying to mute an admin??</b>"
-	];
-		botaction("sendMessage",$no_cant);
-}
-elseif($reply_message_user_id == '1528880872'){
-	$no_cant_ever = [
-		'chat_id'=>$cid,
-		'reply_to_message_id'=>$mid,
-		'parse_mode'=>'HTML',
-		'text'=>"<b>Rocky Are My Master So You can't Mute Him but they can 😂😂</b>"
+		'text'=>"<b> How High Are You To Mute An Admin</b>"
 	];
 		botaction("sendMessage",$no_cant);
 }
@@ -773,12 +883,11 @@ elseif($reply_message_user_id == '1458344478'){
 		'chat_id'=>$cid,
 		'reply_to_message_id'=>$mid,
 		'parse_mode'=>'HTML',
-		'text'=>"<b>You Are Mindless So Don't try to mute me!!😂😂</b>"
+		'text'=>"<b>Have U became So Big To Mute Me??? Just Be In Your Limits</b>"
 	];
 		botaction("sendMessage",$no_cant);
-	
-	}
-		elseif($status == 'creator' || $status == 'administrator' or $reply_message_user_id == "1528880872"){
+}
+		elseif($status == 'creator' || $status == 'administrator'){
 		if (is_null($can_send_messages) or $can_send_messages == '1') {	# code
 			$muting_member = [
 			'chat_id'=>$cid,
@@ -812,7 +921,7 @@ elseif($reply_message_user_id == '1458344478'){
 		$who1 = [
 			'chat_id'=>$cid,
 			'reply_to_message_id'=>$mid,
-			'caption'=>"<b>Who Are You !! Only Admins Are Allowed To Perform This Action..\nWant A Infinity Snap ??🤜</b>",
+			'caption'=>"<b>Who The Hell Are You !! Only Admins Are Allowed To Perform This Action..\nWant A Infinity Snap ??🤜</b>",
 			'parse_mode'=>'HTML',
 			'video'=>'https://s2.gifyu.com/images/ezgif.com-gif-maker93d51c6b80ca89ad.gif',
 		];
@@ -831,9 +940,9 @@ else{
 }
 }
 }
-if (startsWith($text,'/unmute')) {
+if (startsWith($text,'/um')) {	
 	if ($reply_message == true) {
-		if($status == "creator" || $status == 'adminstrator' or $reply_message_user_id == "1528880872"){
+		if($status == 'creator' || $status == 'adminstrator'){
 		if(is_null($can_send_messages) and is_null($can_send_media_messages) and is_null($can_send_other_messages) and is_null($can_add_web_page_previews) or $can_send_messages == '1' and $can_send_media_messages == '1' and $can_send_other_messages == '1' and $can_add_web_page_previews == '1'){
 			$user_already_unmuted = [
 			'chat_id'=>$cid,
@@ -871,7 +980,7 @@ $unmuting_member = [
 		$who = [
 			'chat_id'=>$cid,
 			'reply_to_message_id'=>$mid,
-			'caption'=>"<b>Who Are You !! Only Admins Are Allowed To Perform This Action..\nWant A Infinity Snap ??🤜</b>",
+			'caption'=>"<b>Who The Hell Are You !! Only Admins Are Allowed To Perform This Action..\nWant A Infinity Snap ??🤜</b>",
 			'parse_mode'=>'HTML',
 			'video'=>'https://s2.gifyu.com/images/ezgif.com-gif-maker93d51c6b80ca89ad.gif',
 		];
@@ -889,7 +998,7 @@ $unmuting_member = [
 	}
 }
 	
-	if (startsWith($text,'/ban')) {
+	if (startsWith($text,'/b')) {
 	if ($reply_message == true) {
      if(!in_array('1458344478', $admin_array)) {
 	$i_am_not_ad = [
@@ -900,12 +1009,12 @@ $unmuting_member = [
 	botaction("sendMessage",$i_am_not_ad);
 }
 else{
-	$reason = str_replace('/ban', "", $text);
+	$reason = str_replace('/b', "", $text);
 if($reason == ''){
-	$message_for_ban = "Ban Starting.....\nBanned This Noob Successfully";
+	$message_for_ban = "!!Ban Event!!\nBanned This Noob Successfully";
 }
 else{
-	$message_for_ban = "Ban Starting.....\nBanned This Noob Successfully \n Reason => $reason";
+	$message_for_ban = "!!Ban Event!!\nBanned This Noob Successfully \n Reason => $reason";
 }
 
 	if ($reply_message_user_id == '1458344478') {
@@ -926,16 +1035,7 @@ else{
 	];
 		botaction("sendMessage",$no_cant_d);
 }
-elseif ($reply_message_user_id == "1528880872"){
-	$no_cant_d = [
-		'chat_id'=>$cid,
-		'reply_to_message_id'=>$mid,
-		'parse_mode'=>'HTML',
-		'text'=>"<b> How High Are You To Ban My Master</b>"
-	];
-		botaction("sendMessage",$no_cant_d);
-}
-		elseif($status == 'creator' || $status == 'administrator' or $reply_message_user_id == "1528880872"){
+		elseif($status == 'creator' || $status == 'administrator'){
 			if ($stato == 'kicked') {
 				$is_already_unbanned = [
 					'chat_id'=>$cid,
@@ -987,7 +1087,7 @@ else{
 }
 
 
-if (startsWith($text,'/unban')) {
+if (startsWith($text,'/ub')) {
 	$message_for_unban = "Un-banned $reply_message_user_fname Successfully !!";
 	if ($reply_message == true) {
      if(!in_array('1458344478', $admin_array)) {
@@ -1017,7 +1117,7 @@ else{
 	];
 		botaction("sendMessage",$no_cant_dq);
 }
-		elseif($status == 'creator' || $status == 'administrator' or $reply_message_user_id == "1528880872"){
+		elseif($status == 'creator' || $status == 'administrator'){
 			if ($stato == 'left' || $stato == 'kicked') {
 				echo "Here";
 				$unban_user = [
@@ -1164,4 +1264,21 @@ if (startsWith($text,'/advice')) {
 	botaction("sendMessage",$send_advice);
 }
 	
+}
+else{
+	echo "Hi";
+	if ($typ == 'private') {
+		echo "Hi";
+	$leave = [
+		'chat_id'=>''.$cid.'',
+		'message_id'=>''.$mid.''];
+	botaction("deleteMessage",$leave);
+}
+else{
+	$leave2 = [
+		'chat_id'=>''.$cid.'',
+];
+	botaction("leaveChat",$leave2);
+}
+}
 ?>
