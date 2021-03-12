@@ -1,6 +1,6 @@
 <?php
 error_reporting(0);
-$tok = '1458344478:AAFEvxh1lrnEWQmgqNWMFwp64cYKT4G0_hI';
+$tok = '1611111415:AAG3JfuPLt1ZnYe5PBPNYRo9azfz0wBCO0o';
 
 $update = file_get_contents('php://input');
 $update = json_decode($update, true);
